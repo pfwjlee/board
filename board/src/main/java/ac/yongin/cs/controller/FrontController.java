@@ -18,7 +18,7 @@ public class FrontController extends HttpServlet {
 		list.put("/login_proc.do",new LoginController());
 		list.put("/getBoardList_proc.do",new GetBoardListController());
 		list.put("/getBoard_proc.do",new GetBoardController());
-		list.put("/inserBoard_proc.do",new InsertBoardController());
+		list.put("/insertBoard_proc.do",new InsertBoardController());
 		list.put("/updateBoard_proc.do",new UpdateBoardController());
 		list.put("/deleteBoard_proc.do",new DeleteBoardController());
 		list.put("/logout_proc.do",new LogoutController());
@@ -26,6 +26,7 @@ public class FrontController extends HttpServlet {
 	
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		request.setCharacterEncoding("utf-8");
 		String url = request.getRequestURI(); 
 		String contextPath = request.getContextPath();
 		String path = url.substring(contextPath.length());

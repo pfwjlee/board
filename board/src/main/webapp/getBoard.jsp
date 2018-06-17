@@ -15,7 +15,7 @@
 <body>
 	<div align="center">
 		<h2>글 상세</h2>
-		<a href="logout_proc.jsp">Log-out</a>
+		<a href="logout_proc.do">Log-out</a>
 		<hr>
 		<form action="updateBoard_proc.do" method="post">
 			<input type="hidden" name="seq" value="<%= board.getSeq() %>" />

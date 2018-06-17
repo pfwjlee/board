@@ -16,10 +16,10 @@
 	<div align="center">
 		<h2>글목록</h2>
 		<h3>
-			태스트님 환영합니다...<a href="logout_proc.jsp">Log-out</a>
+			태스트님 환영합니다...<a href="logout_proc.do">Log-out</a>
 		</h3>
 
-		<form action="getBoardList.jsp" method="post">
+		<form action="getBoardList.do" method="post">
 			<table border="1" cellpadding="0" width="700">
 				<tr>
 					<td align="right"><select name="serarchCondition">
