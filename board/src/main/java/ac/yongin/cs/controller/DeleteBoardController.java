@@ -10,7 +10,7 @@ import ac.yongin.cs.common.HttpUtil;
 public class DeleteBoardController implements Controller {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String seq = request.getParameter("seq");
 		
 		BoardVO vo = new BoardVO();
@@ -19,7 +19,7 @@ public class DeleteBoardController implements Controller {
 		BoardDAO dao = new BoardDAO();
 		dao.deleteBoard(vo);
 		
-		HttpUtil.forward(request, response, "getBoardList_proc.do");
+		return "getBoardList_proc.do";
 	}
 
 }

@@ -9,7 +9,7 @@ import ac.yongin.cs.user.vo.UserVO;
 
 public class LoginController implements Controller {
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("LoginController");
 		
 		String id = request.getParameter("id");
@@ -23,10 +23,10 @@ public class LoginController implements Controller {
 		UserVO user = dao.getUser(vo);
 		
 		if(user != null) {
-			HttpUtil.forward(request,response, "getBoardList_proc.do");
+			return "getBoardList_proc.do";
 		}
 		else {
-			HttpUtil.forward(request, response, "login.jsp");
+			return "login";
 		}			
 	}
 }

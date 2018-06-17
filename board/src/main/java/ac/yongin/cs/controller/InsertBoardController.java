@@ -10,7 +10,7 @@ import ac.yongin.cs.common.HttpUtil;
 public class InsertBoardController implements Controller {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 //		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");
@@ -24,7 +24,7 @@ public class InsertBoardController implements Controller {
 		BoardDAO dao = new BoardDAO();
 		dao.insertBoard(vo);
 		
-		HttpUtil.forward(request, response, "getBoardList_proc.do");
+		return "getBoardList_proc.do";
 	}
 
 }

@@ -9,11 +9,11 @@ import ac.yongin.cs.common.HttpUtil;
 public class LogoutController implements Controller {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();
 	
-		HttpUtil.forward(request, response, "login.jsp");
+		return "login";
 	}
 
 }

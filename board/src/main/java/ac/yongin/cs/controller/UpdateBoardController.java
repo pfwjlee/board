@@ -10,7 +10,7 @@ import ac.yongin.cs.common.HttpUtil;
 public class UpdateBoardController implements Controller {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String title = request.getParameter("title");
 		String seq = request.getParameter("seq");
 		String content = request.getParameter("content");
@@ -23,6 +23,6 @@ public class UpdateBoardController implements Controller {
 		BoardDAO dao = new BoardDAO();
 		dao.updateBoard(vo);
 		
-		HttpUtil.forward(request, response, "getBoardList_proc.do");
+		return "getBoardList_proc.do";
 	}
 }

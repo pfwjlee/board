@@ -1,7 +1,7 @@
 <%@ page import="ac.yongin.cs.board.dao.BoardDAO"%>
 <%@ page import="ac.yongin.cs.board.vo.BoardVO"%>
 <%
-	BoardVO board = (BoardVO)request.getAttribute("board");
+	BoardVO board = (BoardVO)session.getAttribute("board");
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
