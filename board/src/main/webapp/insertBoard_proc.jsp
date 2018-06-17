@@ -18,5 +18,5 @@
 	BoardDAO dao = new BoardDAO();
 	dao.insertBoard(vo);
 	
-	response.sendRedirect("getBoardList.jsp");
+	response.sendRedirect("getBoardList_proc.do");
 %>

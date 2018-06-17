@@ -1,12 +1,7 @@
 <%@ page import="ac.yongin.cs.board.dao.BoardDAO"%>
 <%@ page import="ac.yongin.cs.board.vo.BoardVO"%>
 <%
-	String seq = request.getParameter("seq");
-	BoardVO vo = new BoardVO();
-	vo.setSeq(Integer.parseInt(seq));
-	
-	BoardDAO boardDao = new BoardDAO();
-	BoardVO board = boardDao.getBoard(vo);
+	BoardVO board = (BoardVO)request.getAttribute("board");
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,7 +17,7 @@
 		<h2>글 상세</h2>
 		<a href="logout_proc.jsp">Log-out</a>
 		<hr>
-		<form action="updateBoard_proc.jsp" method="post">
+		<form action="updateBoard_proc.do" method="post">
 			<input type="hidden" name="seq" value="<%= board.getSeq() %>" />
 			<table border="1" cellpadding="0" cellspacing="0">
 				<tr>
@@ -54,8 +49,8 @@
 		</form>
 		<hr>
 		<a href="insertBoard.jsp">글등록</a> | <a
-			href="deleteBoard_proc.jsp?seq=<%= board.getSeq() %>">글삭제</a> | <a
-			href="getBoardList.jsp">글목록</a>
+			href="deleteBoard_proc.do?seq=<%= board.getSeq() %>">글삭제</a> | <a
+			href="getBoardList_proc.do">글목록</a>
 	</div>
 </body>
 </html>

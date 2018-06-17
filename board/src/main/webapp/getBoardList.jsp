@@ -1,14 +1,11 @@
 <%@ page import="java.util.List"%>
-<%@ page import="ac.yongin.cs.board.dao.BoardDAO"%>
 <%@ page import="ac.yongin.cs.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%
-	BoardVO vo = new BoardVO();
-	BoardDAO boardDao = new BoardDAO();
-	List<BoardVO> boardList = boardDao.getBoardList(vo);
+	List<BoardVO> boardList = (List)request.getAttribute("boardList");
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,7 +44,7 @@
 			<tr>
 				<td><%= board.getSeq() %></td>
 				<td align="left"><a
-					href="getBoard.jsp?seq=<%= board.getSeq() %>"><%= board.getTitle() %></a></td>
+					href="getBoard_proc.do?seq=<%= board.getSeq() %>"><%= board.getTitle() %></a></td>
 				<td><%= board.getWriter() %></td>
 				<td><%= board.getRegDate() %></td>
 				<td><%= board.getCnt() %></td>

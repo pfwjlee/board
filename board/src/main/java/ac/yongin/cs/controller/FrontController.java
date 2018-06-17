@@ -9,53 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ac.yongin.cs.controller.Controller;
-import ac.yongin.cs.user.dao.UserDAO;
-import ac.yongin.cs.user.vo.UserVO;
-
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	HashMap<String, Controller> mappings = null;
-	
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+	HashMap<String,Controller> list = null;
+	public void init(ServletConfig config) throws ServletException
+	{
+		list = new HashMap<String, Controller>();
+		list.put("/login_proc.do",new LoginController());
+		list.put("/getBoardList_proc.do",new GetBoardListController());
+		list.put("/getBoard_proc.do",new GetBoardController());
+		list.put("/inserBoard_proc.do",new InsertBoardController());
+		list.put("/updateBoard_proc.do",new UpdateBoardController());
+		list.put("/deleteBoard_proc.do",new DeleteBoardController());
+		list.put("/logout_proc.do",new LogoutController());
 	}
-
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String uri = request.getRequestURI();
-		String path = uri.substring(uri.lastIndexOf("/"));
-		System.out.println(uri + "==>" + path);
-
-		if (path.equals("/login_proc.do")) {
-			String id = request.getParameter("id");
-			String password = request.getParameter("password");
-			
-			UserVO vo = new UserVO();
-			vo.setId(id);
-			vo.setPassword(password);
-			
-			UserDAO dao = new UserDAO();
-			UserVO user = dao.getUser(vo);
-			
-			if(user != null) {
-				response.sendRedirect("getBoardList.do");
-			}
-			else {
-				response.sendRedirect("login.jsp");
-			}			
-		} else if (path.equals("/logout_proc.do")) {
-
-		} else if (path.equals("/getBoardList.do")) {
-
-		} else if (path.equals("/getBoard.do")) {
-
-		} else if (path.equals("/insertBoard_proc.do")) {
-
-		} else if (path.equals("/updateBoard_proc.do")) {
-
-		} else if (path.equals("/deleteBoard_proc.do")) {
-
-		}
+	
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String url = request.getRequestURI(); 
+		String contextPath = request.getContextPath();
+		String path = url.substring(contextPath.length());
+		System.out.println("path : " + path);
+		Controller subController = list.get(path);
+		subController.execute(request, response);
 	}
 }

@@ -8,7 +8,6 @@ import ac.yongin.cs.user.dao.UserDAO;
 import ac.yongin.cs.user.vo.UserVO;
 
 public class LoginController implements Controller {
-
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("LoginController");
@@ -24,10 +23,10 @@ public class LoginController implements Controller {
 		UserVO user = dao.getUser(vo);
 		
 		if(user != null) {
-			HttpUtil.forward(request, response, "/getBoardList.do");
+			HttpUtil.forward(request,response, "getBoardList_proc.do");
 		}
 		else {
-			HttpUtil.forward(request, response, "/login.jsp");
+			HttpUtil.forward(request, response, "login.jsp");
 		}			
 	}
 }
